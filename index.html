@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul Karim Bin Azmi – QA & Risk Operations Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b2a;
+    --charcoal: #1c2b3a;
+    --teal: #00b4a6;
+    --teal-light: #00d4c4;
+    --teal-dim: rgba(0,180,166,0.12);
+    --teal-dim2: rgba(0,180,166,0.06);
+    --off-white: #f5f7fa;
+    --white: #ffffff;
+    --text-main: #1c2b3a;
+    --text-mid: #4a5e72;
+    --text-light: #7a8fa3;
+    --border: rgba(28,43,58,0.1);
+    --border-teal: rgba(0,180,166,0.25);
+    --card-shadow: 0 2px 20px rgba(13,27,42,0.07);
+    --card-shadow-hover: 0 8px 40px rgba(13,27,42,0.13);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--off-white);
+    color: var(--text-main);
+    line-height: 1.65;
+    font-size: 15px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(245,247,250,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  nav .brand {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--teal);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  nav .nav-links {
+    display: flex; gap: 1.8rem; list-style: none;
+  }
+  nav .nav-links a {
+    font-size: 0.78rem; font-weight: 500; color: var(--text-mid);
+    text-decoration: none; letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  nav .nav-links a:hover { color: var(--teal); }
+
+  /* Burger button */
+  .burger {
+    display: none;
+    flex-direction: column; justify-content: center; align-items: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .burger:hover { background: var(--teal-dim); }
+  .burger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--text-main);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  /* Animated X when open */
+  .burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile drawer */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 56px; left: 0; right: 0;
+    background: rgba(245,247,250,0.98);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    z-index: 99;
+    padding: 1rem clamp(1.5rem, 5vw, 4rem) 1.5rem;
+    flex-direction: column; gap: 0;
+    transform: translateY(-8px);
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .mobile-menu.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-menu a {
+    font-size: 0.9rem; font-weight: 500;
+    color: var(--text-mid);
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    transition: color 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--teal); }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 980px; margin: 0 auto; padding: 0 clamp(1.25rem, 5vw, 3rem); }
+
+  section { padding: 5rem 0; }
+
+  /* ── HERO ── */
+  #hero {
+    padding-top: 120px;
+    padding-bottom: 5rem;
+    background: linear-gradient(160deg, var(--navy) 0%, var(--charcoal) 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,166,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  #hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,180,166,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 980px; margin: 0 auto;
+    padding: 0 clamp(1.25rem, 5vw, 3rem);
+    position: relative; z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+  }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero-photo {
+    flex-shrink: 0;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--teal);
+    box-shadow: 0 0 0 6px rgba(0,180,166,0.15), 0 20px 60px rgba(0,0,0,0.4);
+    animation: fadeUp 0.6s 0.15s ease both;
+  }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    border: 1px solid rgba(0,212,196,0.35);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1.4rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.9rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    margin-bottom: 0.6rem;
+    white-space: nowrap;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-title {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-value {
+    font-size: 1rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    max-width: 560px;
+    border-left: 3px solid var(--teal);
+    padding-left: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .hero-ctas {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.3rem;
+    border-radius: 4px;
+    font-size: 0.82rem; font-weight: 500;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--teal); color: var(--navy);
+  }
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white);
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-1px); }
+  .btn-wa {
+    background: #25D366; color: white;
+  }
+  .btn-wa:hover { background: #20bb5a; transform: translateY(-1px); }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--white); }
+  .section-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--teal); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
+  }
+  .achievement-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.4rem;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .achievement-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--teal);
+  }
+  .achievement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--border-teal);
+  }
+  .achievement-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .achievement-desc {
+    font-size: 0.82rem;
+    color: var(--text-mid);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ── COMPETENCIES ── */
+  #competencies { background: var(--off-white); }
+  .competencies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .comp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem;
+    transition: all 0.25s;
+  }
+  .comp-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--border-teal);
+  }
+  .comp-icon {
+    width: 40px; height: 40px;
+    background: var(--teal-dim);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+  .comp-title {
+    font-size: 0.9rem; font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+  }
+  .comp-items {
+    font-size: 0.8rem; color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .comp-items span {
+    display: inline-block;
+    background: var(--teal-dim2);
+    border: 1px solid var(--border-teal);
+    border-radius: 3px;
+    padding: 0.1rem 0.45rem;
+    margin: 0.1rem 0.15rem 0.1rem 0;
+    font-size: 0.75rem;
+    color: var(--teal);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--white); }
+  .timeline { position: relative; padding-left: 2px; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 0 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .timeline-item:last-child { margin-bottom: 0; }
+  .timeline-left {
+    text-align: right;
+    padding-top: 0.2rem;
+  }
+  .tl-dates {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+  .tl-company {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .timeline-right {
+    border-left: 2px solid var(--border-teal);
+    padding-left: 1.75rem;
+    position: relative;
+  }
+  .timeline-right::before {
+    content: '';
+    position: absolute;
+    left: -5px; top: 8px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .tl-role {
+    font-size: 1rem; font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .tl-bullets { list-style: none; }
+  .tl-bullets li {
+    font-size: 0.83rem;
+    color: var(--text-mid);
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+  .tl-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-size: 0.75rem;
+  }
+  .current-badge {
+    display: inline-block;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid var(--border-teal);
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+    margin-left: 0.6rem;
+    vertical-align: middle;
+  }
+  .earlier-roles {
+    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 0.75rem;
+  }
+  .earlier-item {
+    font-size: 0.8rem;
+    color: var(--text-mid);
+  }
+  .earlier-item strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 0.1rem;
+  }
+
+  /* ── TOOLS ── */
+  #tools { background: var(--off-white); }
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+  }
+  .tool-pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--text-main);
+    font-family: 'IBM Plex Mono', monospace;
+    transition: all 0.2s;
+  }
+  .tool-pill:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+    background: var(--teal-dim2);
+  }
+  .tool-pill.featured {
+    background: var(--teal-dim);
+    border-color: var(--border-teal);
+    color: var(--teal);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--white); }
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  .edu-card {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: all 0.2s;
+  }
+  .edu-card:hover { box-shadow: var(--card-shadow-hover); border-color: var(--border-teal); }
+  .edu-tag {
+    font-size: 0.7rem;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--teal); font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .edu-degree {
+    font-size: 0.95rem; font-weight: 600;
+    color: var(--navy); margin-bottom: 0.3rem;
+  }
+  .edu-school {
+    font-size: 0.8rem; color: var(--text-mid);
+    margin-bottom: 0.6rem;
+  }
+  .edu-focus {
+    font-size: 0.75rem; color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* ── LANGUAGES ── */
+  #languages { background: var(--off-white); }
+  .lang-grid {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+  }
+  .lang-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.75rem;
+    text-align: center;
+    min-width: 160px;
+    transition: all 0.2s;
+  }
+  .lang-card:hover { border-color: var(--border-teal); transform: translateY(-2px); }
+  .lang-flag {
+    margin-bottom: 0.65rem;
+    line-height: 1;
+  }
+  .lang-flag img {
+    width: 52px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(13,27,42,0.15);
+    display: block;
+    margin: 0 auto;
+  }
+  .lang-name {
+    font-size: 1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.15rem;
+  }
+  .lang-country {
+    font-size: 0.72rem; color: var(--text-light);
+    margin-bottom: 0.3rem;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+  .lang-level {
+    font-size: 0.75rem; color: var(--teal);
+    font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase; letter-spacing: 0.1em;
+  }
+  .lang-dots {
+    display: flex; gap: 4px; justify-content: center; margin-top: 0.6rem;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--border);
+  }
+  .dot.filled { background: var(--teal); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    color: var(--white);
+  }
+  #contact .section-title { color: var(--white); }
+  .contact-row {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.3rem;
+    border-radius: 4px;
+    font-size: 0.82rem; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .contact-link:hover { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+  .contact-link.teal { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+  .contact-link.teal:hover { background: var(--teal-light); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-light);
+    background: var(--off-white);
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 0; }
+    .timeline-left { text-align: left; margin-bottom: 0.5rem; }
+    .tl-dates { display: inline; margin-right: 0.5rem; }
+    .tl-company { display: inline; font-size: 0.75rem; }
+    nav .nav-links { display: none; }
+    .burger { display: flex; }
+    .hero-ctas { flex-direction: column; }
+    .btn { justify-content: center; }
+    .hero-inner { flex-direction: column-reverse; align-items: flex-start; gap: 1.5rem; }
+    .hero-photo { width: 110px; height: 110px; align-self: center; }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 3.5rem 0; }
+    #hero { padding-top: 90px; padding-bottom: 3.5rem; }
+    .hero-name { white-space: normal; font-size: clamp(1.7rem, 8vw, 2.2rem); }
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px; background: var(--border);
+    margin: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="brand">Abdul Karim · QA & Risk Ops</span>
+  <ul class="nav-links">
+    <li><a href="#achievements">Impact</a></li>
+    <li><a href="#competencies">Competencies</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#achievements">Impact</a>
+  <a href="#competencies">Competencies</a>
+  <a href="#experience">Experience</a>
+  <a href="#tools">Tools</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+    <div class="hero-tag">9+ Years · Fintech / Insurance / Trust &amp; Safety</div>
+    <h1 class="hero-name">Abdul Karim Bin Azmi</h1>
+    <p class="hero-title">Quality Assurance &amp; Risk Operations Specialist · Cyberjaya, Malaysia</p>
+    <p class="hero-value">Translating operational complexity into measurable outcomes — through QA frameworks, fraud risk analysis, and data-driven dashboards that reduce errors, elevate accuracy, and protect business integrity.</p>
+    <div class="hero-ctas">
+      <a href="mailto:karim.kelantan@gmail.com" class="btn btn-primary">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        Email Me
+      </a>
+      <a href="https://linkedin.com/in/abdulkarimbinazmi" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://wa.me/60112686 2487" target="_blank" class="btn btn-wa">
+        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.977-1.412A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 0 1-4.047-1.103l-.29-.172-3.006.853.866-2.944-.19-.303A7.959 7.959 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        WhatsApp
+      </a>
+      <a href="#" onclick="window.print(); return false;" class="btn btn-outline">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Download CV
+      </a>
+    </div>
+    </div><!-- end hero-text -->
+    <div class="hero-photo">
+      <img src="data:image/jpeg;base64,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" alt="Abdul Karim Bin Azmi">
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="page">
+    <div class="section-label">Key Achievements</div>
+    <h2 class="section-title">Impact By Numbers</h2>
+    <div class="achievements-grid reveal">
+      <div class="achievement-card">
+        <div class="achievement-num">+15%</div>
+        <div class="achievement-desc">QA pass rate increase through improved calibration accuracy &amp; structured feedback</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-num">−20%</div>
+        <div class="achievement-desc">Recurring quality issues reduced via targeted, data-driven coaching programs</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-num">−30%</div>
+        <div class="achievement-desc">Manual reporting time saved by automating QA dashboards in Power BI</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-num">+18%</div>
+        <div class="achievement-desc">Dispute resolution accuracy improved, lowering repeat escalations significantly</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-num">+12%</div>
+        <div class="achievement-desc">Customer satisfaction scores enhanced through faster escalation &amp; better comms</div>
+      </div>
+      <div class="achievement-card">
+        <div class="achievement-num">−20%</div>
+        <div class="achievement-desc">Arabic language-related escalations reduced through expert translation &amp; SOPs</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COMPETENCIES -->
+<section id="competencies">
+  <div class="page">
+    <div class="section-label">Core Competencies</div>
+    <h2 class="section-title">Areas of Expertise</h2>
+    <div class="competencies-grid reveal">
+      <div class="comp-card">
+        <div class="comp-icon">📊</div>
+        <div class="comp-title">Data &amp; Analytics</div>
+        <div class="comp-items">
+          <span>SQL</span><span>Python</span><span>Pandas</span><span>NumPy</span>
+          <span>Power BI</span><span>Excel</span><span>Lark Base</span><br>
+          <span style="font-family:inherit; font-size:0.78rem; color:var(--text-mid); background:none; border:none; padding:0; margin:0; display:block; margin-top:0.5rem;">SQL for reporting, Python for data cleaning, dashboards for KPI tracking.</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">🛡️</div>
+        <div class="comp-title">Process &amp; Risk Analysis</div>
+        <div class="comp-items">
+          <span>Root Cause Analysis</span><span>Fraud Detection</span><span>Dispute Resolution</span>
+          <span>Claims Investigation</span><span>Compliance Monitoring</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">⚙️</div>
+        <div class="comp-title">Operational Excellence</div>
+        <div class="comp-items">
+          <span>SOP Development</span><span>Documentation</span><span>Stakeholder Collaboration</span>
+          <span>Performance Reporting</span><span>QA Calibration</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-icon">📈</div>
+        <div class="comp-title">Business Insight Delivery</div>
+        <div class="comp-items">
+          <span>KPI Monitoring</span><span>CSAT/DSAT Analysis</span><span>Coaching</span>
+          <span>Management Reporting</span><span>Onboarding Training</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="page">
+    <div class="section-label">Professional Experience</div>
+    <h2 class="section-title">Career Timeline</h2>
+    <div class="timeline reveal">
+
+      <!-- Current -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">Jul 2024 – Present</div>
+          <div class="tl-company">Centauri Services &amp; Technology (OKG)<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Associate, Quality Assurance – P2P Risk &amp; Dispute <span class="current-badge">Current</span></div>
+          <ul class="tl-bullets">
+            <li>Audit P2P risk and dispute investigations to ensure compliance with SOPs, regulatory requirements, and fraud prevention controls.</li>
+            <li>Conduct root cause analysis on QA failures and escalations to identify training gaps and process inefficiencies.</li>
+            <li>Develop and maintain QA performance dashboards using Power BI and Excel to support management decision-making.</li>
+            <li>Deliver structured 1-on-1 coaching sessions to improve investigator accuracy, judgment quality, and written communication.</li>
+            <li>Lead QA calibration sessions with team leads to ensure evaluation consistency and scoring alignment.</li>
+            <li>Monitor QA KPIs including error rates, pass rates, turnaround time, CSAT, and DSAT scores to drive continuous improvement.</li>
+            <li>Conduct onboarding training for new hires on QA standards, SOPs, and investigation best practices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Senior Agent -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">May 2023 – Jun 2024</div>
+          <div class="tl-company">Centauri Services &amp; Technology (OKG)<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Senior Agent, P2P Dispute (Arabic Speaker)</div>
+          <ul class="tl-bullets">
+            <li>Managed global customer disputes, chargebacks, and fraud claims across multiple channels while meeting SLA targets.</li>
+            <li>Performed fraud pattern analysis and behavioral reviews to detect suspicious activity and mitigate financial losses.</li>
+            <li>Authored and updated SOPs and training materials to standardize dispute investigation procedures.</li>
+            <li>Translated Arabic technical and operational content, reducing language-related escalations by 20%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Beyondsoft -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">Jun 2022 – Feb 2023</div>
+          <div class="tl-company">Beyondsoft<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Player Support Lead (Arabic Speaker)</div>
+          <ul class="tl-bullets">
+            <li>Led complex and high-priority player support escalations while ensuring SLA and quality compliance.</li>
+            <li>Developed knowledge base articles, FAQs, and response templates to improve first-contact resolution.</li>
+            <li>Coordinated with Shenzhen headquarters to align global support strategies and operational consistency.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AIG Claims -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">Jun 2021 – May 2022</div>
+          <div class="tl-company">AIG Shared Services<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Claims Analyst (Arabic Speaker)</div>
+          <ul class="tl-bullets">
+            <li>Assessed and processed insurance claims in accordance with policy terms and compliance standards.</li>
+            <li>Conducted claims investigations, document verification, and liability evaluation.</li>
+            <li>Maintained accurate claim documentation and audit trails.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Cigna -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">Jun 2021 – May 2022</div>
+          <div class="tl-company">Cigna<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Claims Analyst (Arabic Speaker)</div>
+          <ul class="tl-bullets">
+            <li>Reviewed inpatient and outpatient medical insurance claims across multiple country-specific policies.</li>
+            <li>Identified discrepancies and potential fraud indicators; ensured regulatory compliance.</li>
+            <li>Provided Arabic-language support to policyholders and healthcare providers.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Concentrix -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">Oct 2018 – Feb 2020</div>
+          <div class="tl-company">Concentrix<br>Kuala Lumpur</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Content Moderator (Arabic &amp; English)</div>
+          <ul class="tl-bullets">
+            <li>Moderated Arabic and English content in line with platform policies and community guidelines.</li>
+            <li>Applied policy judgment to identify violations, abuse patterns, and fraud signals under strict SLAs.</li>
+            <li>Participated in quality calibration sessions.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Earlier -->
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="tl-dates">2014 – 2018</div>
+          <div class="tl-company">Earlier Career</div>
+        </div>
+        <div class="timeline-right">
+          <div class="tl-role">Earlier Roles</div>
+          <div class="earlier-roles">
+            <div class="earlier-item">
+              <strong>Operations Coordinator</strong>
+              Osama Zaid Azraq Est · Makkah · Dec 2015 – Mar 2018
+            </div>
+            <div class="earlier-item">
+              <strong>Admin Executive (Seasonal)</strong>
+              Tabung Haji · Makkah · Aug – Nov 2015
+            </div>
+            <div class="earlier-item">
+              <strong>Senior Business Specialist</strong>
+              AIG Shared Services · KL · Aug 2014 – Aug 2015
+            </div>
+            <div class="earlier-item">
+              <strong>International Sales Executive</strong>
+              Mayflower Acme Tours · KL · Jan – Aug 2014
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="page">
+    <div class="section-label">Technical Stack</div>
+    <h2 class="section-title">Tools &amp; Platforms</h2>
+    <div class="tools-grid reveal">
+      <span class="tool-pill featured">Power BI</span>
+      <span class="tool-pill featured">Microsoft Excel</span>
+      <span class="tool-pill featured">SQL</span>
+      <span class="tool-pill featured">Python</span>
+      <span class="tool-pill">Power Query</span>
+      <span class="tool-pill">Pandas / NumPy</span>
+      <span class="tool-pill">Lark Sheet</span>
+      <span class="tool-pill">Lark Base</span>
+      <span class="tool-pill">Zendesk</span>
+      <span class="tool-pill">Salesforce</span>
+      <span class="tool-pill">CRM Systems</span>
+      <span class="tool-pill">Microsoft 365</span>
+      <span class="tool-pill">Gmail</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="page">
+    <div class="section-label">Education</div>
+    <h2 class="section-title">Academic Background</h2>
+    <div class="edu-grid reveal">
+      <div class="edu-card">
+        <div class="edu-tag">In Progress · Expected Nov 2026</div>
+        <div class="edu-degree">Master of Business Administration (MBA)</div>
+        <div class="edu-school">Saito University College, Malaysia</div>
+        <div class="edu-focus">Business Analysis &amp; Decision-Making · Process Improvement · Data-Driven Management · Operations Strategy · Risk Management · Digital Transformation</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-tag">2025 · APEL T7</div>
+        <div class="edu-degree">Accreditation of Prior Experiential Learning</div>
+        <div class="edu-school">Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)</div>
+        <div class="edu-focus">Recognised by the Malaysian Qualifications Agency (MQA)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LANGUAGES -->
+<section id="languages">
+  <div class="page">
+    <div class="section-label">Languages</div>
+    <h2 class="section-title">Communication</h2>
+    <div class="lang-grid reveal">
+      <div class="lang-card">
+        <div class="lang-flag">
+          <img src="https://flagcdn.com/w80/sa.png" alt="Saudi Arabia flag" width="48" height="32">
+        </div>
+        <div class="lang-name">Arabic</div>
+        <div class="lang-level">Native</div>
+        <div class="lang-dots">
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div>
+        </div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-flag">
+          <img src="https://flagcdn.com/w80/gb.png" alt="UK flag" width="48" height="32">
+        </div>
+        <div class="lang-name">English</div>
+        <div class="lang-level">Proficient</div>
+        <div class="lang-dots">
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+        </div>
+      </div>
+      <div class="lang-card">
+        <div class="lang-flag">
+          <img src="https://flagcdn.com/w80/my.png" alt="Malaysia flag" width="48" height="32">
+        </div>
+        <div class="lang-name">Malay</div>
+        <div class="lang-level">Advanced</div>
+        <div class="lang-dots">
+          <div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot filled"></div><div class="dot"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="page">
+    <div class="section-label" style="color: rgba(0,212,196,0.8);">Get In Touch</div>
+    <h2 class="section-title">Contact</h2>
+    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; max-width: 500px;">Open to QA, Risk Operations, and Business Analysis roles. Let's connect.</p>
+    <div class="contact-row">
+      <a href="mailto:karim.kelantan@gmail.com" class="contact-link teal">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        karim.kelantan@gmail.com
+      </a>
+      <a href="https://wa.me/601126862487" target="_blank" class="contact-link" style="background:#25D366; color:white; border-color:#25D366;">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.977-1.412A9.953 9.953 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 0 1-4.047-1.103l-.29-.172-3.006.853.866-2.944-.19-.303A7.959 7.959 0 0 1 4 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z"/></svg>
+        +60 11-2686 2487
+      </a>
+      <a href="https://linkedin.com/in/abdulkarimbinazmi" target="_blank" class="contact-link">
+        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn Profile
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Abdul Karim Bin Azmi · Quality Assurance &amp; Risk Operations Specialist · Cyberjaya, Selangor, Malaysia
+</footer>
+
+<script>
+  // Burger menu toggle
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  burgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burgerBtn.classList.toggle('open', isOpen);
+  });
+
+  // Close mobile menu when a link is clicked
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burgerBtn.classList.remove('open');
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
